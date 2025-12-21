@@ -16,6 +16,20 @@ public class AuthController {
     public AuthController(UserService userService){
         this.userService =userService;
     }
+    @PostMapping("/admin-login")
+    public String adminLogin(@RequestBody User user){
+    Optional<User>loggedUser=userService.login(user.getUsername(), user.getPassword());
+
+    if(loggedUser.isPresent()) {
+        if ("ADMIN".equalsIgnoreCase(loggedUser.get().getRole())) {
+            return "Admin login Successful";
+        } else {
+            return "Access Denied:Not an Admin";
+        }
+    }else {
+        return "Invalid Credentails";
+    }
+    }
     @PostMapping("/register")
     public User register(@RequestBody User user){
         return userService.register(user);
