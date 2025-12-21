@@ -32,6 +32,10 @@ public class EmployeeService {
         existing.setSalary(updatedEmployee.getSalary());
         return employeeRepository.save(existing);
     }
+    public List<Employee>findByDepartment(String department){
+        return employeeRepository.findByDepartment(department);
+
+    }
 
     public void deleteEmployee(Long id){
         employeeRepository.deleteById(id);
