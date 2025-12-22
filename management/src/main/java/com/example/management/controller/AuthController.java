@@ -21,7 +21,7 @@ public class AuthController {
     Optional<User>loggedUser=userService.login(user.getUsername(), user.getPassword());
 
     if(loggedUser.isPresent()) {
-        if ("ADMIN".equalsIgnoreCase(loggedUser.get().getRole())) {
+        if ("ROLE_ADMIN".equalsIgnoreCase(loggedUser.get().getRole())) {
             return "Admin login Successful";
         } else {
             return "Access Denied:Not an Admin";
