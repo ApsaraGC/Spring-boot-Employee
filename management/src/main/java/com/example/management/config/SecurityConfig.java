@@ -26,7 +26,7 @@ public class SecurityConfig {
                                 "/api/auth/login",
                                 "/api/auth/admin-login"
                         ).permitAll()
-                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/leaves/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
